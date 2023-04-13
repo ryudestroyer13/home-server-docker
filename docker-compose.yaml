@@ -1,0 +1,62 @@
+version: "3.7"
+
+services:
+
+  heimdall:
+    image: linuxserver/heimdall:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${STORAGE}/Heimdall Server:/config
+    ports:
+      - 8500:80
+      - 6443:443
+    restart: unless-stopped
+      
+  vsftpd:
+    image: panubo/vsftpd
+    environment:
+      - FTP_USER=ftpuser
+      - FTP_PASSWORD=ftppassword
+    expose:
+      - 21
+    volumes:
+      - ${MEDIA}:/srv
+    network_mode: "host"
+  
+  plex:
+    image: jaymoulin/plex:1.31.2.6810
+    expose:
+      - 32400
+      - 33400
+    environment:
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${STORAGE}/Plex Media Server:/root/Library/Application Support/Plex Media Server
+      - ${MEDIA}:/media
+      - ${STORAGE}/tmp:/tmp
+    restart: unless-stopped
+    network_mode: "host"
+
+  pihole:
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/tcp"
+      - "8080:80/tcp"
+      - "443:443/tcp"
+    environment:
+      TZ: ${TIMEZONE}
+      WEBPASSWORD: 'password'
+    volumes:
+      - ${STORAGE}/Pihole Server/etc-pihole/:/etc/pihole/
+      - ${STORAGE}/Pihole Server/etc-dnsmasq.d/:/etc/dnsmasq.d/
+    dns:
+      - 127.0.0.1
+      - 1.1.1.1
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
