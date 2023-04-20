@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+
+  heimdall:
+    image: linuxserver/heimdall:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${STORAGE}/Heimdall Server:/config
+    ports:
+      - 8500:80
+      - 6443:443
+    restart: unless-stopped
