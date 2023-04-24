@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+
+  plex:
+    image: jaymoulin/plex:1.31.2.6810
+    expose:
+      - 32400
+      - 33400
+    environment:
+      - TZ=${TIMEZONE}
+    volumes:
+      - ${STORAGE}/Plex Server/Plex Media Server:/root/Library/Application Support/Plex Media Server
+      - ${MEDIA}:/media
+      - ${STORAGE}/Plex Server/tmp:/tmp
+    restart: unless-stopped
+    network_mode: "host"
