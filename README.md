@@ -5,15 +5,20 @@
 Content of the repository
 
 1. *[Heimdall](./heimdall_container)*
-2. *[Pi-Hole](./pihole_container)*
-3. *[Plex](./plex_container)*
-4. *Samba*
-5. *[Vsftpd](./vsftpd_container)*
-6. *[Server1](./server1)*
+2. *[Homer](./homer_container)*
+3. *[Pi-Hole](./pihole_container)*
+4. *[Plex](./plex_container)*
+5. *Samba*
+6. *[Vsftpd](./vsftpd_container)*
+7. *[Server1](./server1)*
 
 ### **Heimdall**
 
 *[Heimdall](./heimdall_container)* is a container that allows for easy management of links to the most commonly used websites and web applications.
+
+### **Homer**
+
+*[Homer](./homer_container)* is a dead simple static homepage for your server to keep your services on hand, from a simple yaml configuration file.
 
 ### **Pi-Hole**
 
