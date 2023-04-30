@@ -8,7 +8,7 @@ Content of the repository
 2. *[Homer](./homer_container)*
 3. *[Pi-Hole](./pihole_container)*
 4. *[Plex](./plex_container)*
-5. *Samba*
+5. *[Samba](./samba_container)*
 6. *[Vsftpd](./vsftpd_container)*
 7. *[Server1](./server1)*
 
@@ -27,6 +27,10 @@ Content of the repository
 ### **Plex**
 
 *[Plex](./plex_container)* is a personal multimedia and streaming application.
+
+### **Samba**
+
+*[Samba](./samba_container)* is a free and open-source implementation of the SMB/CIFS protocol that allows for file and printer sharing between different operating systems, particularly between Unix/Linux and Windows systems.
 
 ### **Vsftpd**
 
