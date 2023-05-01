@@ -63,7 +63,7 @@ fdisk -l
 # Command to obtain the UUID.
 ls -l /dev/disk/by-uuid/
 # The following command mounts the disk, and the directory can be changed to the one where we want to mount it.
-echo UUID="{Disk name or UUID}" /mnt/external_storage ntfs-3g defaults,auto 0 0 | \
+echo UUID="{Disk name or UUID}" /mnt/external_storage exfat rw,user,exec,umask=000 0 0 | \
      sudo tee -a /etc/fstab
 # You can either execute this command or restart the system.
 mount -a
