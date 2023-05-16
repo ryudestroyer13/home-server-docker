@@ -37,7 +37,7 @@ services:
     restart: unless-stopped   
   
   plex:
-    image: jaymoulin/plex:1.31.2.6810
+    image: jaymoulin/plex:1.32.1.6999
     expose:
       - 32400
       - 33400
