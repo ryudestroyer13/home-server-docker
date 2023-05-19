@@ -4,19 +4,24 @@
 
 Content of the repository
 
-1. *[Heimdall](./heimdall_container)*
-2. *[Homer](./homer_container)*
-3. *[Mealie](./mealie_container)*
-4. *[Pi-Hole](./pihole_container)*
-5. *[Plex](./plex_container)*
-6. *[Samba](./samba_container)*
-7. *[Vsftpd](./vsftpd_container)*
-8. *[Server1](./server1)*
-9. *[Server2](./server2)*
+1. *[Dashy](./dashy_container)*
+2. *[Heimdall](./heimdall_container)*
+3. *[Homer](./homer_container)*
+4. *[Mealie](./mealie_container)*
+5. *[Pi-Hole](./pihole_container)*
+6. *[Plex](./plex_container)*
+7. *[Samba](./samba_container)*
+8. *[Vsftpd](./vsftpd_container)*
+9. *[Server1](./server1)*
+10. *[Server2](./server2)*
 
 <hr>
 
 ## **Summary of the docker-compose files**
+
+### **Dashy**
+
+*[Dashy](./dashy_container)* is an open source, highly customizable, easy to use, privacy-respecting dashboard app.
 
 ### **Heimdall**
 

@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+
+  dashy:
+    image: lissy93/dashy:latest
+    volumes:
+      - ${STORAGE}/Dashy Server/conf.yml:/app/public/conf.yml
+      - ${STORAGE}/Dashy Server/item-icons:/app/public/item-icons
+    ports:
+      - 4000:80
+    environment:
+      - NODE_ENV=production
+      - UID=1000
+      - GID=1000
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'node', '/app/services/healthcheck']
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
