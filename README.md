@@ -12,6 +12,7 @@ Content of the repository
 6. *[Samba](./samba_container)*
 7. *[Vsftpd](./vsftpd_container)*
 8. *[Server1](./server1)*
+9. *[Server2](./server2)*
 
 <hr>
 
@@ -48,6 +49,10 @@ Content of the repository
 ### **Server 1**
 
 *[Server1](./server1)* is the docker-compose file that I use on my first server.
+
+### **Server 2**
+
+*[Server2](./server2)* is the docker-compose file that I use on my second server.
 
 <hr>
 
