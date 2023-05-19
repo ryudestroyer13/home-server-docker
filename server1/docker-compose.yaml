@@ -2,6 +2,25 @@ version: "3.7"
 
 services:
 
+  dashy:
+    image: lissy93/dashy:latest
+    volumes:
+      - ${STORAGE}/Dashy Server/conf.yml:/app/public/conf.yml
+      - ${STORAGE}/Dashy Server/item-icons:/app/public/item-icons
+    ports:
+      - 4000:80
+    environment:
+      - NODE_ENV=production
+      - UID=1000
+      - GID=1000
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'node', '/app/services/healthcheck']
+      interval: 1m30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
   heimdall:
     image: linuxserver/heimdall:latest
     environment:
@@ -14,6 +33,20 @@ services:
       - 8500:80
       - 6443:443
     restart: unless-stopped
+
+  mealie-omni:
+    image: hkotel/mealie:omni-nightly
+    ports:
+      - "3000:3000"
+      - "9000:9000"
+    volumes:
+      - ${STORAGE}/Mealie Server:/app/data/
+    environment:
+      - ALLOW_SIGNUP=true
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    restart: always
 
   pihole:
     image: pihole/pihole:latest
@@ -37,7 +70,7 @@ services:
     restart: unless-stopped   
   
   plex:
-    image: jaymoulin/plex:1.31.2.6810
+    image: jaymoulin/plex:1.32.1.6999
     expose:
       - 32400
       - 33400

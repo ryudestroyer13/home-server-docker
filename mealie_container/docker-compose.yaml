@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+
+  mealie-omni:
+    image: hkotel/mealie:omni-nightly
+    container_name: mealie
+    ports:
+      - "3000:3000"
+      - "9000:9000"
+    volumes:
+      - ${STORAGE}/Mealie Server:/app/data/
+    environment:
+      - ALLOW_SIGNUP=true
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    restart: always

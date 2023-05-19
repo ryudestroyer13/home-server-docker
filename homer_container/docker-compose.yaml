@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+
+  homer:
+    image: b4bz/homer
+    volumes:
+      - ${STORAGE}/Homer Server:/www/assets
+    ports:
+      - 8200:8080
+    user: 1000:1000
+    environment:
+      - INIT_ASSETS=1
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    restart: unless-stopped

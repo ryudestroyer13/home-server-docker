@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+
+  samba:
+    image: dperson/samba
+    restart: always
+    container_name: testsamba
+    command: '-u "user;password" -s "downloads;/downloads;yes;no" -s "media;/media;yes;no"'
+    stdin_open: true
+    tty: true
+    environment:
+      - TZ=${TIMEZONE}
+    ports:
+      - 139:139
+      - 445:445
+    volumes:
+      - ${STORAGE}/torrents:/downloads
+      - ${MEDIA}:/media
+  
