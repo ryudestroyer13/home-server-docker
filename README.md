@@ -5,15 +5,16 @@
 Content of the repository
 
 1. *[Dashy](./dashy_container)*
-2. *[Heimdall](./heimdall_container)*
-3. *[Homer](./homer_container)*
-4. *[Mealie](./mealie_container)*
-5. *[Pi-Hole](./pihole_container)*
-6. *[Plex](./plex_container)*
-7. *[Samba](./samba_container)*
-8. *[Vsftpd](./vsftpd_container)*
-9. *[Server1](./server1)*
-10. *[Server2](./server2)*
+2. *[FileBrowser](./filebrowser_container)*
+3. *[Heimdall](./heimdall_container)*
+4. *[Homer](./homer_container)*
+5. *[Mealie](./mealie_container)*
+6. *[Pi-Hole](./pihole_container)*
+7. *[Plex](./plex_container)*
+8. *[Samba](./samba_container)*
+9. *[Vsftpd](./vsftpd_container)*
+10. *[Server1](./server1)*
+11. *[Server2](./server2)*
 
 <hr>
 
@@ -22,6 +23,10 @@ Content of the repository
 ### **Dashy**
 
 *[Dashy](./dashy_container)* is an open source, highly customizable, easy to use, privacy-respecting dashboard app.
+
+### **FileBrowser**
+
+*[FileBrowser](./filebrowser_container)* it is a page for uploading and downloading files stored on the server..
 
 ### **Heimdall**
 

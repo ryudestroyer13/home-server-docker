@@ -21,6 +21,19 @@ services:
       retries: 3
       start_period: 40s
 
+  filebrowser:
+    image: hurlenko/filebrowser
+    environment:
+      - UID=1000
+      - GID=1000
+      - TZ=${TIMEZONE}
+    ports:
+      - "8200:8080"
+    volumes:
+      - ${EXTERNAL}:/data
+      - ${STORAGE}/filebrowser/fb-config:/config
+    restart: unless-stopped
+
   heimdall:
     image: linuxserver/heimdall:latest
     environment:
