@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+
+  filebrowser:
+    image: hurlenko/filebrowser
+    environment:
+      - UID=1000
+      - GID=1000
+      - TZ=${TIMEZONE}
+    ports:
+      - "8200:8080"
+    volumes:
+      - ${MEDIA}:/data
+      - ${STORAGE}/filebrowser/fb-config:/config
+    restart: unless-stopped
