@@ -92,4 +92,6 @@ services:
       - 21
     volumes:
       - ${MEDIA}:/srv
+      - ${STORAGE}/FTPServer/app:/home/vsftpd
+      - ${STORAGE}/FTPServer/log:/var/log/vsftpd
     network_mode: "host"
