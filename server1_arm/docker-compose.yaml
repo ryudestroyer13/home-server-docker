@@ -83,15 +83,19 @@ services:
     restart: unless-stopped
     network_mode: "host"
     
-  vsftpd:
-    image: panubo/vsftpd
+  samba:
+    image: dperson/samba
+    restart: always
+    command: '-u "user;password" -s "downloads;/downloads;yes;no" -s "media;/media;yes;no"'
+      #- FTP_USER=${FTP_USER}
+      #- FTP_PASSWORD=${FTP_PASSWORD}
+    stdin_open: true
+    tty: true
     environment:
-      - FTP_USER=${FTP_USER}
-      - FTP_PASSWORD=${FTP_PASSWORD}
-    expose:
-      - 21
+      - TZ=${TIMEZONE}
+    ports:
+      - 139:139
+      - 445:445
     volumes:
-      - ${MEDIA}:/srv
-      - ${STORAGE}/FTPServer/app:/home/vsftpd
-      - ${STORAGE}/FTPServer/log:/var/log/vsftpd
-    network_mode: "host"
+      - ${STORAGE}/torrents:/downloads
+      - ${MEDIA}:/media
