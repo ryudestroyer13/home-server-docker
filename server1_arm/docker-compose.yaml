@@ -67,35 +67,32 @@ services:
       - 1.1.1.1
     cap_add:
       - NET_ADMIN
-    restart: unless-stopped   
-  
+    restart: unless-stopped
+
   plex:
-    image: jaymoulin/plex:1.32.5.7349
+    image: jaymoulin/plex:1.32.8.7639
     expose:
       - 32400
       - 33400
     environment:
       - TZ=${TIMEZONE}
     volumes:
-      - ${STORAGE}/Plex Server/Plex Media Server:/root/Library/Application Support/Plex Media Server
+      - ${STORAGE}/PlexServer/Plex Media Server:/root/Library/Application Support/Plex Media Server
       - ${MEDIA}:/media
-      - ${STORAGE}/Plex Server/tmp:/tmp
+      - ${STORAGE}/PlexServer/tmp:/tmp
+    restart: unless-stopped
+    network_mode: "host"
+
+  vsftpd:
+    image: pablokbs/panubo-vsftpd-arm:latest
+    environment:
+      - FTP_USER=${FTP_USER}
+      - FTP_PASSWORD=${FTP_PASSWORD}
+    expose:
+      - 21
+    volumes:
+      - ${MEDIA}:/srv
+      - ${STORAGE}/VsftpdServer/log:/var/log
     restart: unless-stopped
     network_mode: "host"
     
-  samba:
-    image: dperson/samba
-    restart: always
-    command: '-u "user;password" -s "downloads;/downloads;yes;no" -s "media;/media;yes;no"'
-      #- FTP_USER=${FTP_USER}
-      #- FTP_PASSWORD=${FTP_PASSWORD}
-    stdin_open: true
-    tty: true
-    environment:
-      - TZ=${TIMEZONE}
-    ports:
-      - 139:139
-      - 445:445
-    volumes:
-      - ${STORAGE}/torrents:/downloads
-      - ${MEDIA}:/media
