@@ -83,6 +83,19 @@ services:
     restart: unless-stopped
     network_mode: "host"
 
+  portainer:
+    image: portainer/portainer-ce:latest
+    restart: always
+    environment:
+      - TZ=${TIMEZONE}
+    ports:
+      - "9300:9000"
+      - "8300:8000"
+      - "9443:9443"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${STORAGE}/portainer/data:/data
+
   vsftpd:
     image: pablokbs/panubo-vsftpd-arm:latest
     environment:
